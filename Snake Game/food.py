@@ -15,3 +15,5 @@ class Food(Turtle):
     def replenish(self):
         self.goto(y=random.randint(-270, 280), x=random.randint(-280, 270))
 
+    def destroy(self):
+        self.hideturtle()
