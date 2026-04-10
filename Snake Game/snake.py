@@ -1,3 +1,4 @@
+import turtle
 from turtle import Turtle
 MOVE_DISTANCE = 20
 UP = 90
@@ -12,11 +13,21 @@ class Snake:
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
-        self.next_direction = UP  # Buffer for queued direction changes
+        self.next_direction = UP
     
     def create_snake(self):
         for position in STARTING_POSITIONS:
             self.add_seg(position)
+
+    def game_over(self):
+        for seg in self.segments:
+            seg.hideturtle()
+
+        self.segments.clear()
+        self.segments = []
+        self.create_snake()
+        self.head = self.segments[0]
+        self.next_direction = UP
 
     def add_seg(self, position):
         seg = Turtle(shape="square")
