@@ -5,6 +5,8 @@ STARTING_POSITION = (0, 260)
 ALIGNMENT = "center"
 FONT = ("Terminal", 20, "normal")
 GAME_OVER_FONT = ("Impact", 48, "bold")
+with open("data.txt", "r") as data:
+    highscore_data = int(data.read())
 
 class Scoreboard(Turtle):
     def __init__(self):
@@ -12,7 +14,7 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.color("white")
         self.penup()
-        self.high_score = 0
+        self.high_score = highscore_data
         self.score = 0
         self.render_score()
 
@@ -29,6 +31,8 @@ class Scoreboard(Turtle):
     def game_over(self):
         if self.score > self.high_score:
             self.high_score = self.score
+            with open("data.txt", "w") as high_score_data:
+                high_score_data.write(str(self.high_score))
         self.score = 0
         self.home()
         self.color("red")
