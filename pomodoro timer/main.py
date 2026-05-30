@@ -33,14 +33,20 @@ def start_timer():
     long_break_sec = LONG_BREAK_MIN * 60
 
     if reps % 8 == 0:
-        count_down(long_break_sec)
         timer_label.config(text="BREAK", fg=GREEN)
+        count_down(long_break_sec)
+        window.attributes('-topmost', True)
+        window.attributes('-topmost', False)
     elif reps % 2 == 0:
         timer_label.config(text="BREAK", fg=PINK)
         count_down(short_break_sec)
+        window.attributes('-topmost', True)
+        window.attributes('-topmost', False)
     else:
         timer_label.config(text="WORK", fg=RED)
         count_down(work_sec)
+        window.attributes('-topmost', True)
+        window.attributes('-topmost', False)
 
 
 
