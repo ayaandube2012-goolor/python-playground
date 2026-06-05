@@ -2,10 +2,10 @@ from tkinter import *
 import pandas as pd
 import random
 BACKGROUND_COLOR = "#B1DDC6"
-word ={}
+word = {}
 
-def flip_card(word):
-    english_word = word["English"]
+def flip_card(word_to_translate):
+    english_word = word_to_translate["English"]
     canvas.itemconfig(card_image, image=card_back)
     canvas.itemconfig(word_label, text=english_word)
     canvas.itemconfig(language_label, text="english")
