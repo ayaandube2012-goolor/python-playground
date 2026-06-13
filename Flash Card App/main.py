@@ -25,15 +25,15 @@ def display_word():
     flip_card_delay = window.after(3000, flip_card, word)
 
 def known():
+    global german_words
     try:
        german_words.remove(word)
     except ValueError:
-        global german_words
         reset_cards = messagebox.askyesno(title="Oops", message="Looks like you know all the words :)"
                                                   "\nWould you like to reset them?")
         if reset_cards:
             new_df = pd.read_csv("data/german-english data.csv")
-            german_words = df.to_dict(orient="records")
+            german_words = new_df.to_dict(orient="records")
             data = pandas.DataFrame(german_words)
             data.to_csv("data/words_to_learn.csv", index=False)
         else:
